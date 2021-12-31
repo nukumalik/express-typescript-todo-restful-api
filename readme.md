@@ -8,6 +8,7 @@ Simple project made with express, typescript and mongodb. Feel free to fork, pul
 
 - Node JS (min >= 14.\* LTS)
 - MongoDB
+- Postman (optional)
 
 ---
 
@@ -55,20 +56,24 @@ $ npm run build
 $ npm run start
 ```
 
+#### Postman
+
+`doc/` folder includes postman collections and variables, you can import them easily.
+
 ---
 
 ### Third-Party Packages
 
-- Express
-- Body Parser
-- Express-validator
-- Mongoose
-- Typescript
-- TS-Node
-- Eslint
-- Prettier
-- Nodemon
-- DotENV
+- express
+- body-parser
+- express-validator
+- mongoose
+- typescript
+- ts-node
+- eslint
+- prettier
+- nodemon
+- dotenv
 
 ---
 
