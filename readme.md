@@ -28,7 +28,7 @@ $ cd express-typescript-todo-restful-api
 #### Install Packages
 
 ```bash
-$ npm run install
+$ npm install
 ```
 
 #### Rename and Config ENV
