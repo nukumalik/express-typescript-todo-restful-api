@@ -1,14 +1,20 @@
 import express from 'express'
 import 'dotenv/config'
-import {Connection} from './utils'
+import {Connection, Passport} from './utils'
 import middlewares from './middlewares'
 import routes from './routes'
 
 const app = express()
 
-Connection.mongoDB()
+// Middlewares
+app.use(middlewares)
 
-app.use(middlewares).use('/api/v1', routes)
+// Utils
+Connection.mongoDB()
+Passport.strategy()
+
+// Routes
+app.use('/api/v1', routes)
 
 const port = process.env.PORT
 

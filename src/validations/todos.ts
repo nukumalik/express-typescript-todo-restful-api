@@ -1,8 +1,8 @@
 import {check} from 'express-validator'
 
-export const checkTitle = check('title').not().isEmpty().withMessage('Title is required')
+export const title = check('title').not().isEmpty().withMessage('Title is required')
 
-export const checkDescription = check('description')
+export const description = check('description')
   .not()
   .isEmpty()
   .withMessage('Description is required')
