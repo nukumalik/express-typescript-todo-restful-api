@@ -2,16 +2,16 @@
 
 Simple project made with express, typescript and mongodb. Feel free to fork, pull, edit and chat me if needed 😊
 
-### Requirements
-
 ---
+
+### Requirements
 
 - Node JS (min >= 14.\* LTS)
 - MongoDB
 
-### Getting Started
-
 ---
+
+### Getting Started
 
 #### Clone Repo
 
@@ -55,9 +55,9 @@ $ npm run build
 $ npm run start
 ```
 
-### Third-Party Packages
-
 ---
+
+### Third-Party Packages
 
 - Express
 - Body Parser
@@ -70,8 +70,8 @@ $ npm run start
 - Nodemon
 - DotENV
 
-### License
-
 ---
+
+### License
 
 MIT
