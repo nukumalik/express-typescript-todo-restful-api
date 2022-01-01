@@ -6,7 +6,7 @@ import {Passport} from '../utils'
 const router = Router()
 
 router
-  .get('/:id', Passport.authenticate, UserController.profile)
+  .get('/profile', Passport.authenticate, UserController.profile)
   .post('/login', UserValidation.email, UserValidation.password, UserController.login)
   .post(
     '/register',

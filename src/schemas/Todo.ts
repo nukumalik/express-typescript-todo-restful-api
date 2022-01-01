@@ -15,6 +15,10 @@ export const todoSchema = new Schema(
       type: String,
       default: false,
     },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'users',
+    },
   },
   {timestamps: true}
 )

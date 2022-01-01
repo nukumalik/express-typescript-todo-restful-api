@@ -6,11 +6,11 @@ import {UserModel} from '../schemas/User'
 import {jsonResponse} from '../utils/response'
 import jwt from 'jsonwebtoken'
 import {JWTPayload} from '../interfaces/jwt'
+import {AuthenticatedRequest} from '../interfaces/request'
 
-export const profile = async (req: Request, res: Response) => {
+export const profile = async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const {id} = req.params
-    const user: User = await UserModel.findById(id)
+    const user: User = await UserModel.findById(req?.user?._id)
     if (!user) return jsonResponse(res, 404, 'User is not found')
 
     const data: User = {
@@ -44,10 +44,13 @@ export const register = async (req: Request, res: Response) => {
 export const login = async (req: Request, res: Response) => {
   try {
     const {email, password}: User = req.body
-    const user: User = await UserModel.findOne({email})
+    const user: User = await UserModel.findOne({email}).select([
+      'email',
+      'password',
+      'createdAt',
+      'updatedAt',
+    ])
     if (!user) return jsonResponse(res, 400, 'Email not registered yet')
-
-    console.log(user)
 
     const isMatch = compareSync(password ?? '', user?.password ?? '')
     if (!isMatch) return jsonResponse(res, 400, 'Password is invalid')
@@ -68,9 +71,9 @@ export const login = async (req: Request, res: Response) => {
   }
 }
 
-export const update = async (req: Request, res: Response) => {
+export const update = async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const {id} = req.params
+    const id = req.user?._id
     const user: User = await UserModel.findById(id)
     if (!user) return jsonResponse(res, 404, 'User is not found')
 
@@ -87,9 +90,9 @@ export const update = async (req: Request, res: Response) => {
   }
 }
 
-export const remove = async (req: Request, res: Response) => {
+export const remove = async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const {id} = req.params
+    const id = req.params?._id
     const user: User = await UserModel.findById(id)
     if (!user) return jsonResponse(res, 404, 'User is not found')
 
